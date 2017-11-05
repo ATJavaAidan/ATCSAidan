@@ -6,12 +6,9 @@ public class betterArrayTest {
 		int[] nums= {1,2,3,4,5,6,7,8,9,10};
 		betterArray packer = new betterArray(nums);
 		packer.print();
-		packer.push(100);
+		packer.insert(3,-1);
 		packer.print();
-		packer.contains(100);
-		packer.contains(30);
-		packer.pop();
-		packer.print();
+		
 	}
 
 }
