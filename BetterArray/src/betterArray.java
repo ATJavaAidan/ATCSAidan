@@ -65,13 +65,19 @@ public class betterArray {
 		}
 	}
 	
-	public void swap(int index, int id) {
+	public void indextovalue(int index, int id) {
 		if (index<=ids.length-1) {
 			ids[index]=id;
 		}
 		else {
 			System.out.println("This index is out of bounds!");
 		}
+	}
+	
+	public void swap(int index1, int index2) {
+		int a=ids[index1];
+		ids[index1]=ids[index2];
+		ids[index2]=a;
 	}
 	
 	public void insert(int index, int id) {
@@ -91,6 +97,24 @@ public class betterArray {
 		}
 		ids=tempArray;
 	}
+	
+
+    public void bubbleSort() {
+    	int counter=0;
+        for (int i = 0; i < ids.length-1; i++) {
+            for (int n = 0; n < ids.length-i-1; n++) {
+                if (ids[n] > ids[n+1]) {
+                    swap(n, n+1);
+                    counter++;
+                }
+            }
+        }
+    System.out.println(counter);
+    }
+    
+    public void otherSort() {
+    		
+    }
 	
 	public void position(int id) {
 		// Returnes position in array of some id

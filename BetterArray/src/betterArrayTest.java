@@ -3,10 +3,10 @@ public class betterArrayTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] nums= {1,2,3,4,5,6,7,8,9,10};
+		int[] nums= {10,9,23,235,7,34,594,324,-10,23,4,5,2,4,7,8};
 		betterArray packer = new betterArray(nums);
 		packer.print();
-		packer.insert(3,-1);
+		packer.bubbleSort();
 		packer.print();
 		
 	}
