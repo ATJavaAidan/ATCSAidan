@@ -1,10 +1,34 @@
-public class betterArray {
-	int[] ids;
+public class betterArray { int[] ids;
+	// This is the one class variable, the array itself.
 
-	public betterArray(int[] nums) {
-		ids = nums;
+	public betterArray(int[] nums) {ids = nums;}
+	//Sets the class variable equal to an integer fed to the class object.
+	
+	public betterArray() {}
+	//If the class is called with no argument, then the ids array defaults to length 0.
+
+	public int get(int index) {
+		if (index>=0 && index<=ids.length-1) {
+			return ids[index];
+		}
+		else {
+			System.out.println("Your index is out of bounds!");
+			return 0000000000000000000000000000000000000;
+		}
 	}
-
+	//Simply returns an id at some index, and returns zeros and an error message
+	//if the index is not in the acceptable range.
+	
+	public void update(int index, int val) {
+		if (index>=0 && index<=ids.length-1) {
+			ids[index]=val;
+		}
+		else {
+			System.out.println("Your index is out of bounds!");
+		}
+	}
+	//Updates the value at some index, and returns an error if index is not in array.
+	
 	public int contains(int val) {
 		// This method determines if val is contained in ids
 		int counter=0;
@@ -112,19 +136,36 @@ public class betterArray {
     System.out.println(counter);
     }
     
-    public void otherSort() {
-    		
+    public int max() {
+    		int temp=ids[0];
+    		for (int i=0; i<=ids.length-1; i++) {
+    			if (ids[i]>temp) {
+    				temp=ids[i];
+    			}
+    		}
+    		return temp;
     }
-	
-	public void position(int id) {
-		// Returnes position in array of some id
-	}
-
-	public void accessID(int pos) {
-		// type a position and access an id
-	}
-
-	public void getSize() {
-
-	}
+    
+    public int min() {
+		int temp=ids[0];
+		for (int i=0; i<=ids.length-1; i++) {
+			if (ids[i]<temp) {
+				temp=ids[i];
+			}
+		}
+		return temp;
+    }
+    
+    public int size() {
+    		return ids.length;
+    }
+    
+    public double average() {
+    		double sum=0.0;
+    		for (int i=0; i<ids.length; i++) {
+    			sum=sum+ids[i];
+    		}
+    		double denominator= ids.length;
+    		return (sum/(denominator));
+    }
 }
