@@ -13,6 +13,7 @@ public class betterArray { int[] ids;
 		if (index>=0 && index<=ids.length-1) {
 			return ids[index];
 		}
+		//
 		else {
 			System.out.println("Your index is out of bounds!");
 			return 0000000000000000000000000000000000000;
