@@ -1,6 +1,6 @@
 
 public class account {
-	private static double balance=0.0;
+	protected double balance=0.0;
 	
 	//Constructor
 	public account(double initBalance) {
@@ -12,12 +12,20 @@ public class account {
 		return balance;
 	}
 	
-	public void deposit(double cash) {
-		if (cash>0)balance+=cash;
+	public boolean deposit(double cash) {
+		if (cash>0) {
+			balance+=cash;
+			return true;
+		}
+		return false;
 
 	}
 	
-	public void withdraw(double money) {
-		if (money>0)balance-=money;
+	public boolean withdraw(double money) {
+		if (money>0) {
+			balance-=money;
+			return true;
+		}
+		return false;
 	}
 }
