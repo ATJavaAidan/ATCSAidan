@@ -5,7 +5,6 @@ public class archer extends champion{
 		//Supers up variables to the parent class champion,
 		//where a figure is generated. Since the archer class
 		//has a bow and quiver, instances of these objects are created.
-		
 		super(x, y, g);
 		quiver q= new quiver();
 		q.paintQuiver(x, y, g);
