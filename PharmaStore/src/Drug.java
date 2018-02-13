@@ -47,8 +47,8 @@ public class Drug {
 		price=newPrice;
 	}
 	
-	public String print() {
-		return "This drug, "+name+ ", costs "+price+" and has an LD50 of "+ldfifty+".";
+	public void info() {
+		System.out.println("This drug, "+name+ ", costs "+price+" and has an LD50 of "+ldfifty+".");
 	}
 	
 

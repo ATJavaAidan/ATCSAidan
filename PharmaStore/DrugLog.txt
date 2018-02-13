@@ -1,0 +1,4 @@
+0 Percocet 100 10.0 482.0 false
+1 Cocaine 100 500.0 95.0 false
+2 Ketamine 100 100.0 77.0 false
+3 LSD 100 20.0 46.0 false
