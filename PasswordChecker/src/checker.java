@@ -104,4 +104,9 @@ public class checker {
 		}
 	}
 	
+	public static int compareTo(String a, char[] b) {
+		char[] c = a.toCharArray();
+		
+	}
+	
 }
