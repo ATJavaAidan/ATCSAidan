@@ -10,10 +10,8 @@ class sort {
 		File file = new File("/Users/Aidanabdulali/Desktop/words.txt");
 		ArrayList<String> names = read(file);
 		Collections.sort(names, String.CASE_INSENSITIVE_ORDER);
-		for (String x:names) {
-			x=x.toLowerCase();
-		}
-		System.out.println(search(names, "zandt"));
+		
+		System.out.println(search(names, "aardvark"));
 	}
 
 	public static int search(ArrayList<String> y, String x) {
@@ -23,28 +21,22 @@ class sort {
 		System.out.println(y.size()-1);
 		while (leftbound <= rightbound) {
 			int z = ((rightbound+leftbound)/2);
-			System.out.println(z);
+			System.out.println(z+" "+leftbound+" "+rightbound + " " + y.get(z));
 
 			if (y.get(z).compareTo(x) == 0) {
 				System.out.println("The index of your item is "+z+".");
 				return z;
 			}
 			
-			if (z==y.size()-1 || z==0) {
-				break;
-			}
 			
-			if (y.get(z).compareTo(x) > 0) {
+			if (y.get(z).compareTo(x) < 0) {
 				leftbound = z + 1;
 			}
 
-			if (y.get(z).compareTo(x) < 0) {
+			if (y.get(z).compareTo(x) > 0) {
 				rightbound = z - 1;
 			}
 			
-			else {
-				break;
-			}
 			
 		}
 		System.out.println("Your item is not in the list!!");	
@@ -56,7 +48,7 @@ class sort {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String line;
 			while ((line = reader.readLine()) != null) {
-				words.add(line);
+				words.add(line.toLowerCase());
 			}
 			reader.close();
 			return words;
