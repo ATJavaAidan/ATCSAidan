@@ -33,9 +33,8 @@ public class GUI extends JFrame implements ActionListener {
 		Locations.add("Asphodel Meadows");
 		Locations.add("Sisyphus Rock");
 		Locations.add("Oedipus Cavern");
-		TripArray trips = new TripArray();
-		String s = "2014-05-01";
-		String e = "2014-05-10";
+		String s = "2018-04-30";
+		String e = "2018-05-20";
 		LocalDate start = LocalDate.parse(s);
 		LocalDate end = LocalDate.parse(e);
 		ArrayList<LocalDate> totalDates = new ArrayList<>();
@@ -153,13 +152,13 @@ public class GUI extends JFrame implements ActionListener {
 	    		int r = 0;
 	    		int t = 0;
 	    		if (sinDropDown.getSelectedIndex()==0) {
-	    			r = 3;
+	    			r = 1;
 	    		}
 	    		else if (sinDropDown.getSelectedIndex()==1) {
 	    			r = 2;
 	    		}
 	    		else if (sinDropDown.getSelectedIndex()==2) {
-	    			r = 1;
+	    			r = 3;
 	    		}
 	    		
 	    		
@@ -176,10 +175,9 @@ public class GUI extends JFrame implements ActionListener {
 	    			t = 3;
 	    		}
 	    		
-	    		//Booking z = new Booking(name, r, b, t);
-	    		//for (Trip g: trips) {
-	    		//	
-	    		//}
+	    		Booking z = new Booking(name, r, b, t);
+	    		ArrayList<Trip> data=trips.getData();
+	    		trips.findT(r).addBooking(3, z);
 	    } 
 	    
 	  }	 

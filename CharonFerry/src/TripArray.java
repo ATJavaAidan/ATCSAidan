@@ -22,7 +22,31 @@ public class TripArray {
 		}
 	}
 	
-	
+	public Trip findT(int c) {
+		for (Trip x: trips) {
+			if (c==1) {
+				if (x.getC1reservations()<10) {
+					return x;
+				}
+			}
+			if (c==2) {
+				if (x.getC2reservations()<20) {
+					return x;
+				} 
+			}
+			if(c==3) {
+				if (x.getC3reservations()<40) {
+					return x;
+				}
+				
+			}
+		}
+		ArrayList<Booking> z = new ArrayList<Booking>();
+		ArrayList<Booking> g = new ArrayList<Booking>();
+		ArrayList<Booking> u = new ArrayList<Booking>();
+		Trip h = new Trip("Never", 00.00, "Nowhere", z, g, u);
+		return h;
+	}
 	
 	public boolean contains(Trip t) {
 		if (trips.contains(t)) {
@@ -100,6 +124,10 @@ public class TripArray {
 		for (Trip x: trips) {
 			x.info(); 
 		}
+	}
+	
+	public ArrayList<Trip> getData(){
+		return trips;
 	}
 	
 	public Trip find(String a, double t) {

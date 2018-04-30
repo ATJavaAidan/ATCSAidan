@@ -89,13 +89,13 @@ public class Trip {
 	}
 	
 	public void addBooking(int x, Booking b) {
-		if (x==0) {
+		if (x==3) {
 			bookingsC1.add(b);
 		}
-		if (x==1) {
+		if (x==2) {
 			bookingsC2.add(b);
 		}
-		if (x==2) {
+		if (x==1) {
 			bookingsC3.add(b);
 		}
 		else {
