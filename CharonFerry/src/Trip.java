@@ -92,10 +92,10 @@ public class Trip {
 		if (x==3) {
 			bookingsC1.add(b);
 		}
-		if (x==2) {
+		else if (x==2) {
 			bookingsC2.add(b);
 		}
-		if (x==1) {
+		else if (x==1) {
 			bookingsC3.add(b);
 		}
 		else {

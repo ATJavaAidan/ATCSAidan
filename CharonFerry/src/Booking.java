@@ -29,45 +29,46 @@ public class Booking {
 		return bribe;
 	}
 	
-	public void assignClass() {
+	public int assignClass(int result, int bribe) {
 		if (result==3 && bribe>=1000) {
-			quality=3;
+			return 3;
 		}
 		else if (result==3 && bribe<1000) {
 			Random rand = new Random();
 			int x = rand.nextInt(10);
 			if (x>6) {
-				quality=3;
+				return 3;
 			}
 			if (x<7) {
-				quality=2;
+				return 2;
 			}
 		}
 		else if (result==2 && bribe>=1000000) {
-			quality=3;
+			return 3;
 		}
 		else if (result==2 && bribe<1000000 && bribe>500000) {
 			Random rand = new Random();
 			int x = rand.nextInt(10);
 			if (x>7) {
-				quality=3;
+				return 3;
 			}
 			if (x<8) {
-				quality=2;
+				return 2;
 			}
 		}
 		else if (result==2 && bribe<500000) {
-			quality=2;
+			return 2;
 		}
 		else if (result==1 && bribe>=10000000) {
-			quality=3;
+			return 3;
 		}
 		else if (result==1 && bribe>=1000000) {
-			quality=2;
+			return 2;
 		}
 		else {
-			quality=1;
+			return 1;
 		}
+		return 1;
 	}
 	
 	public double assignImportance() {

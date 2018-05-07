@@ -24,7 +24,7 @@ public class TripArray {
 	
 	public Trip findT(int c) {
 		for (Trip x: trips) {
-			if (c==1) {
+			if (c==3) {
 				if (x.getC1reservations()<10) {
 					return x;
 				}
@@ -34,7 +34,7 @@ public class TripArray {
 					return x;
 				} 
 			}
-			if(c==3) {
+			if(c==1) {
 				if (x.getC3reservations()<40) {
 					return x;
 				}
@@ -67,12 +67,15 @@ public class TripArray {
 			g.write (trips.size()+"\n");
 			for (Trip x: trips) {
 					g.write(x.getDate()+" "+x.getTime()+" "+x.getLocation()+" "+x.getC1reservations()+" "+x.getC2reservations()+" "+x.getC3reservations()+"\n");
+					g.write(x.getC1reservations()+"\n");
 					for(Booking z: x.getc1()) {
 						g.write(z.getName()+" "+z.getTime()+" "+z.getResult()+" "+z.getBribe()+"\n");
 					}
+					g.write(x.getC2reservations()+"\n");
 					for(Booking z: x.getc2()) {
 						g.write(z.getName()+" "+z.getTime()+" "+z.getResult()+" "+z.getBribe()+"\n");
 					}
+					g.write(x.getC3reservations()+"\n");
 					for(Booking z: x.getc3()) {
 						g.write(z.getName()+" "+z.getTime()+" "+z.getResult()+" "+z.getBribe()+"\n");
 					}
@@ -85,6 +88,11 @@ public class TripArray {
 		}
 	}
 	
+	public void fileReader() {
+		
+	}
+	
+	/*
 	public void fileReader() {
 		try {
 			FileReader fr = new FileReader("TripLog.txt");
@@ -119,7 +127,7 @@ public class TripArray {
 		}
 		
 	}
-
+	*/
 	public void print() {
 		for (Trip x: trips) {
 			x.info(); 

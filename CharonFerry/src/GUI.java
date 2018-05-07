@@ -19,13 +19,16 @@ public class GUI extends JFrame implements ActionListener {
 	JComboBox sinDropDown;
 	JTextField bribeText;
 	JComboBox timeDropDown;
-	TripArray trips;
+	JButton getJudged;
+	TripArray ourA;
 	ArrayList<LocalDate> totalDates;
 	ArrayList<String> Locations;
+	int classy;
 	
 	private static final long serialVersionUID = 1L;
 
-	public GUI() {   
+	public GUI() {  
+		ourA = new TripArray();
 		ArrayList<String> Locations = new ArrayList<String>();
 		Locations.add("Mourning Fields");
 		Locations.add("Tartarus");
@@ -33,8 +36,8 @@ public class GUI extends JFrame implements ActionListener {
 		Locations.add("Asphodel Meadows");
 		Locations.add("Sisyphus Rock");
 		Locations.add("Oedipus Cavern");
-		String s = "2018-04-30";
-		String e = "2018-05-20";
+		String s = "2018-05-01";
+		String e = "2018-05-30";
 		LocalDate start = LocalDate.parse(s);
 		LocalDate end = LocalDate.parse(e);
 		ArrayList<LocalDate> totalDates = new ArrayList<>();
@@ -42,7 +45,7 @@ public class GUI extends JFrame implements ActionListener {
 		    totalDates.add(start);
 		    start = start.plusDays(1);
 		}
-		for (int i=0; i<20; i++) {
+		for (int i=0; i<10; i++) {
 			String CT = totalDates.get(i).toString();
 			double t1 = 9.00;
 			double t2 = 5.00;
@@ -59,21 +62,22 @@ public class GUI extends JFrame implements ActionListener {
 			ArrayList<Booking> g = new ArrayList<Booking>();
 			Trip one = new Trip(CT, t1, l1, b, o, p);
 			Trip two = new Trip(CT, t2, l2, m, u, g);
-			trips.add(one);
-			trips.add(two);
+			ourA.add(one);
+			ourA.add(two);
 			
 		}
 		
 		this.setLayout(new FlowLayout());
-		//User Panel #1 (Judgement Panel):
 		
-		//Name input
+		//User Panel #1 (Judgement Panel):
 		JPanel userJudge = new JPanel(new BorderLayout());  
 		userJudge.setLayout(new BoxLayout(userJudge, BoxLayout.PAGE_AXIS));
 		userJudge.setBackground(Color.RED);
+		
+		//Name input
 		JLabel name = new JLabel("Name:");	
 		userJudge.add(name, BorderLayout.NORTH);
-		JTextField NameText = new JTextField(20);
+		NameText = new JTextField(20);
 		NameText.addActionListener(this);
 		userJudge.add(NameText, BorderLayout.SOUTH);
 	
@@ -81,7 +85,7 @@ public class GUI extends JFrame implements ActionListener {
 		JLabel sin = new JLabel("Sin committed:");
 		userJudge.add(sin, BorderLayout.NORTH);
 		String[] sinChoices = {"Robbery", "Murder", "Incest"};
-		final JComboBox<String> sinDropDown = new JComboBox<String>(sinChoices);
+		sinDropDown = new JComboBox<String>(sinChoices);
 		sinDropDown.setVisible(true);
 		sinDropDown.addActionListener(this);
 		userJudge.add(sinDropDown);
@@ -89,7 +93,7 @@ public class GUI extends JFrame implements ActionListener {
 		//bribe input
 		JLabel bribe = new JLabel("Add Bribe:");
 		userJudge.add(bribe, BorderLayout.NORTH);
-		JTextField bribeText = new JTextField(20);
+		bribeText = new JTextField(20);
 		bribeText.addActionListener(this);
 		userJudge.add(bribeText, BorderLayout.SOUTH);
 		
@@ -97,18 +101,18 @@ public class GUI extends JFrame implements ActionListener {
 		JLabel timeInP = new JLabel("Time spent in purgatory:");
 		userJudge.add(timeInP, BorderLayout.NORTH);
 		String[] time = {"Less than one year", "1-5 years", "5+ years"};
-		final JComboBox<String> timeDropDown = new JComboBox<String>(time);
+		timeDropDown = new JComboBox<String>(time);
 		timeDropDown.setVisible(true);
 		timeDropDown.addActionListener(this);
 		userJudge.add(timeDropDown);
 		
 		//Compile inputs and move on button
-		JButton getJudged = new JButton("OK");
+		getJudged = new JButton("OK");
 		userJudge.add(getJudged, BorderLayout.SOUTH);
 		getJudged.addActionListener(this);
 		this.add(userJudge);
 		
-		/*
+		
 		//booking panel
 		JPanel booking = new JPanel(new BorderLayout());   
 		booking.setLayout(new BoxLayout(booking, BoxLayout.PAGE_AXIS));
@@ -118,11 +122,11 @@ public class GUI extends JFrame implements ActionListener {
 		JButton yes = new JButton("Yes");
 		booking.add(yes, BorderLayout.SOUTH);
 		this.add(booking);
-
 		yes.addActionListener(this);
 
 		//SATAN'S PANEL
 		//search panel 
+/*		
 		JPanel satanSearch = new JPanel(new BorderLayout());  
 		satanSearch.setLayout(new BoxLayout(satanSearch, BoxLayout.PAGE_AXIS));
 		satanSearch.setBackground(Color.BLUE);
@@ -134,35 +138,36 @@ public class GUI extends JFrame implements ActionListener {
 		JPanel results = new JPanel(new BorderLayout());
 		results.setLayout(new BoxLayout(results, BoxLayout.PAGE_AXIS));
 		results.setBackground(Color.BLUE);
-
+*/
 
 		this.setTitle("Trip to Hell");
 		this.setSize(700, 700); 
 		this.setLocation(50, 50);
-		this.setVisible(true);	
-		*/		    
+		this.setVisible(true);		    
 	}
 
 	public void actionPerformed(ActionEvent e) {
 	    String str = e.getActionCommand();
 	    System.out.println("You clicked " + str + " button");
-	 
-	    if(str.equals("OK")) {
+	    
+	    if(str=="OK") {
+	    	if(!NameText.getText().equals("") || !bribeText.getText().equals("")) {
+	    		System.out.println(NameText.getText());
 	    		String name = NameText.getText();
+	    		
 	    		int r = 0;
 	    		int t = 0;
 	    		if (sinDropDown.getSelectedIndex()==0) {
-	    			r = 1;
+	    			r = 3;
 	    		}
 	    		else if (sinDropDown.getSelectedIndex()==1) {
 	    			r = 2;
 	    		}
 	    		else if (sinDropDown.getSelectedIndex()==2) {
-	    			r = 3;
+	    			r = 1;
 	    		}
 	    		
-	    		
-	    		
+	    		//if()
 	    		int b = Integer.parseInt(bribeText.getText());
 	    		
 	    		if (timeDropDown.getSelectedIndex()==0) {
@@ -174,16 +179,20 @@ public class GUI extends JFrame implements ActionListener {
 	    		else if (timeDropDown.getSelectedIndex()==2) {
 	    			t = 3;
 	    		}
-	    		
+	    		System.out.println("Your name is "+NameText.getText()+", the severity of your crime is "+r+", your waiting index is "+t+", and you bribed me with "+b+" dollars.");
 	    		Booking z = new Booking(name, r, b, t);
-	    		ArrayList<Trip> data=trips.getData();
-	    		trips.findT(r).addBooking(3, z);
-	    } 
-	    
-	  }	 
+	    		classy = z.assignClass(r, b);
+	    		ourA.findT(classy).addBooking(classy, z);
+	    		ourA.findT(classy).info();
+	    		ourA.fileWriter();
+	    	}
+	    	else {
+	    		System.out.println("You have not entered enough information!");
+	    	}
+	    }
+	  }
 
 	public static void main(String args[]) {
-		new GUI();                      
+		new GUI();                     
 	}
-
 }
