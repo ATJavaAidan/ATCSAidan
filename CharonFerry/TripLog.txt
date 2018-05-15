@@ -1,82 +1,22 @@
 20
-2018-05-01 9.0 Oedipus Cavern 1 0 0
-1
-Aidan 3 100000 3.0
-0
-0
-2018-05-01 5.0 Cerberus Pit 0 0 0
-0
-0
-0
-2018-05-02 9.0 Oedipus Cavern 0 0 0
-0
-0
-0
-2018-05-02 5.0 Cerberus Pit 0 0 0
-0
-0
-0
-2018-05-03 9.0 Oedipus Cavern 0 0 0
-0
-0
-0
-2018-05-03 5.0 Sisyphus Rock 0 0 0
-0
-0
-0
-2018-05-04 9.0 Asphodel Meadows 0 0 0
-0
-0
-0
+2018-05-01 9.0 AsphodelMeadows 1 0 0
+Hello 3 1000 1.0
+2018-05-01 5.0 AsphodelMeadows 0 0 0
+2018-05-02 9.0 AsphodelMeadows 0 0 0
+2018-05-02 5.0 OedipusCavern 0 0 0
+2018-05-03 9.0 AsphodelMeadows 0 0 0
+2018-05-03 5.0 CerberusPit 0 0 0
+2018-05-04 9.0 AsphodelMeadows 0 0 0
 2018-05-04 5.0 Tartarus 0 0 0
-0
-0
-0
-2018-05-05 9.0 Oedipus Cavern 0 0 0
-0
-0
-0
-2018-05-05 5.0 Cerberus Pit 0 0 0
-0
-0
-0
-2018-05-06 9.0 Tartarus 0 0 0
-0
-0
-0
-2018-05-06 5.0 Mourning Fields 0 0 0
-0
-0
-0
-2018-05-07 9.0 Cerberus Pit 0 0 0
-0
-0
-0
-2018-05-07 5.0 Cerberus Pit 0 0 0
-0
-0
-0
-2018-05-08 9.0 Asphodel Meadows 0 0 0
-0
-0
-0
-2018-05-08 5.0 Mourning Fields 0 0 0
-0
-0
-0
-2018-05-09 9.0 Asphodel Meadows 0 0 0
-0
-0
-0
-2018-05-09 5.0 Asphodel Meadows 0 0 0
-0
-0
-0
-2018-05-10 9.0 Mourning Fields 0 0 0
-0
-0
-0
-2018-05-10 5.0 Asphodel Meadows 0 0 0
-0
-0
-0
+2018-05-05 9.0 OedipusCavern 0 0 0
+2018-05-05 5.0 CerberusPit 0 0 0
+2018-05-06 9.0 OedipusCavern 0 0 0
+2018-05-06 5.0 Tartarus 0 0 0
+2018-05-07 9.0 SisyphusRock 0 0 0
+2018-05-07 5.0 OedipusCavern 0 0 0
+2018-05-08 9.0 OedipusCavern 0 0 0
+2018-05-08 5.0 Tartarus 0 0 0
+2018-05-09 9.0 AsphodelMeadows 0 0 0
+2018-05-09 5.0 CerberusPit 0 0 0
+2018-05-10 9.0 CerberusPit 0 0 0
+2018-05-10 5.0 SisyphusRock 0 0 0

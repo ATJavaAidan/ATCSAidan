@@ -1,9 +1,5 @@
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 //import java.awt.event.ActionEvent;
@@ -15,11 +11,21 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GUI extends JFrame implements ActionListener {	
+	JPanel results;
+	JPanel choice;
+	JPanel userJudge;
+	JPanel booking;
+	JPanel satanSearch;
 	JTextField NameText;
+	JTextField searchN;
 	JComboBox sinDropDown;
 	JTextField bribeText;
 	JComboBox timeDropDown;
 	JButton getJudged;
+	JButton whoB1;
+	JButton whoB2;
+	JButton searchName;
+	JButton ok;
 	TripArray ourA;
 	ArrayList<LocalDate> totalDates;
 	ArrayList<String> Locations;
@@ -30,12 +36,12 @@ public class GUI extends JFrame implements ActionListener {
 	public GUI() {  
 		ourA = new TripArray();
 		ArrayList<String> Locations = new ArrayList<String>();
-		Locations.add("Mourning Fields");
+		Locations.add("MourningFields");
 		Locations.add("Tartarus");
-		Locations.add("Cerberus Pit");
-		Locations.add("Asphodel Meadows");
-		Locations.add("Sisyphus Rock");
-		Locations.add("Oedipus Cavern");
+		Locations.add("CerberusPit");
+		Locations.add("AsphodelMeadows");
+		Locations.add("SisyphusRock");
+		Locations.add("OedipusCavern");
 		String s = "2018-05-01";
 		String e = "2018-05-30";
 		LocalDate start = LocalDate.parse(s);
@@ -69,10 +75,28 @@ public class GUI extends JFrame implements ActionListener {
 		
 		this.setLayout(new FlowLayout());
 		
-		//User Panel #1 (Judgement Panel):
-		JPanel userJudge = new JPanel(new BorderLayout());  
+		//User Panel #1 (Choose panel)
+		choice = new JPanel(new BorderLayout());  
+		choice.setLayout(new BoxLayout(choice, BoxLayout.PAGE_AXIS));
+		choice.setBackground(Color.RED);
+		JLabel who = new JLabel("Are You A Sinner, or Satan?: ");	
+		choice.add(who, BorderLayout.NORTH);
+		whoB1 = new JButton("Sinner");
+		whoB2 = new JButton("Satan");
+		choice.add(whoB1, BorderLayout.SOUTH);
+		choice.add(whoB2, BorderLayout.SOUTH);
+		whoB1.addActionListener(this);
+		whoB2.addActionListener(this);
+		this.add(choice);
+		choice.setVisible(true);
+		
+		
+		
+		//User Panel #2 (Judgement Panel):
+		userJudge = new JPanel(new BorderLayout());  
 		userJudge.setLayout(new BoxLayout(userJudge, BoxLayout.PAGE_AXIS));
 		userJudge.setBackground(Color.RED);
+		
 		
 		//Name input
 		JLabel name = new JLabel("Name:");	
@@ -111,34 +135,54 @@ public class GUI extends JFrame implements ActionListener {
 		userJudge.add(getJudged, BorderLayout.SOUTH);
 		getJudged.addActionListener(this);
 		this.add(userJudge);
+		userJudge.setVisible(false);
 		
 		
 		//booking panel
-		JPanel booking = new JPanel(new BorderLayout());   
+		booking = new JPanel(new BorderLayout());   
 		booking.setLayout(new BoxLayout(booking, BoxLayout.PAGE_AXIS));
 		booking.setBackground(Color.RED);
+		/*
 		JLabel satisfied = new JLabel("Are you satsfied?");
 		booking.add(satisfied, BorderLayout.SOUTH);
 		JButton yes = new JButton("Yes");
 		booking.add(yes, BorderLayout.SOUTH);
-		this.add(booking);
 		yes.addActionListener(this);
+		*/
+		this.add(booking);
+		booking.setVisible(false);
 
-		//SATAN'S PANEL
-		//search panel 
-/*		
-		JPanel satanSearch = new JPanel(new BorderLayout());  
+		satanSearch = new JPanel(new BorderLayout());  
+		
 		satanSearch.setLayout(new BoxLayout(satanSearch, BoxLayout.PAGE_AXIS));
-		satanSearch.setBackground(Color.BLUE);
+		satanSearch.setBackground(Color.RED);
+		
 		JLabel search = new JLabel("Name:");
-		booking.add(search, BorderLayout.SOUTH);
-		JTextField search_ = new JTextField(20);
-		userJudge.add(search_, BorderLayout.SOUTH);
+		satanSearch.add(search, BorderLayout.WEST);
+		searchN = new JTextField(20);
+		searchN.addActionListener(this);
+		satanSearch.add(searchN, BorderLayout.WEST);
+		searchName = new JButton("Search");
+		searchName.addActionListener(this);
+		satanSearch.add(searchName, BorderLayout.SOUTH);
+		this.add(satanSearch);
+		satanSearch.setVisible(false);
 
-		JPanel results = new JPanel(new BorderLayout());
+		
+		
+		results = new JPanel(new BorderLayout());
+		
 		results.setLayout(new BoxLayout(results, BoxLayout.PAGE_AXIS));
-		results.setBackground(Color.BLUE);
-*/
+		results.setBackground(Color.RED);
+		
+		JLabel tripInfo = new JLabel("Thank you for booking a trip to hell. Check Below for more specifics!");
+		results.add(tripInfo, BorderLayout.EAST);
+		
+		ok = new JButton("OKAY");
+		results.add(ok, BorderLayout.EAST);
+		ok.addActionListener(this);
+		this.add(results);
+		results.setVisible(false);
 
 		this.setTitle("Trip to Hell");
 		this.setSize(700, 700); 
@@ -146,9 +190,40 @@ public class GUI extends JFrame implements ActionListener {
 		this.setVisible(true);		    
 	}
 
+	/*
+	JPanel results;
+	JPanel choice;
+	JPanel userJudge;
+	JPanel booking;
+	JPanel satanSearch;
+	*/
+	
 	public void actionPerformed(ActionEvent e) {
 	    String str = e.getActionCommand();
 	    System.out.println("You clicked " + str + " button");
+	    if(str=="Satan") {
+	    		choice.setVisible(false);
+			satanSearch.setVisible(true)	;	
+	    }
+	    
+	    if(str=="Search") {
+    			satanSearch.setVisible(false);	
+    			String sname = searchN.getText();
+    			ourA.search(sname);
+    			choice.setVisible(true);
+	    }
+	    
+	    if(str=="Sinner") {
+			choice.setVisible(false)	;
+	    		userJudge.setVisible(true);
+			booking.setVisible(true);
+
+	    }
+	    
+	    if(str=="OKAY") {
+			choice.setVisible(true);
+	    		results.setVisible(false);
+	    }
 	    
 	    if(str=="OK") {
 	    	if(!NameText.getText().equals("") || !bribeText.getText().equals("")) {
@@ -185,6 +260,25 @@ public class GUI extends JFrame implements ActionListener {
 	    		ourA.findT(classy).addBooking(classy, z);
 	    		ourA.findT(classy).info();
 	    		ourA.fileWriter();
+	    		String infoP = "Your name is "+NameText.getText()+", the severity of your crime is "+r+", your waiting index is "+t+"\n"+", and you bribed me with "+b+" dollars.";
+	    		String tI = ourA.findT(classy).infoS();
+
+	    		userJudge.setVisible(false);
+	    		
+	    		JLabel nameOfPas = new JLabel("Your Info: ");
+	    		results.add(nameOfPas, BorderLayout.EAST);
+	    
+	    		JLabel info = new JLabel(infoP);
+	    		results.add(info, BorderLayout.EAST);
+	    		
+	    		JLabel timeOfTrip = new JLabel("Trip Information: ");
+	    		results.add(timeOfTrip, BorderLayout.EAST);
+	    		
+	    		JLabel infoj = new JLabel(tI);
+	    		results.add(infoj, BorderLayout.EAST);
+	    		
+	    		
+	    		results.setVisible(true);
 	    	}
 	    	else {
 	    		System.out.println("You have not entered enough information!");
@@ -195,4 +289,5 @@ public class GUI extends JFrame implements ActionListener {
 	public static void main(String args[]) {
 		new GUI();                     
 	}
+	
 }

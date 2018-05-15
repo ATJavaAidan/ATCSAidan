@@ -114,6 +114,17 @@ public class Trip {
 		System.out.println("This trip leaves on "+Date+" at "+timeS+" with "+C1seatsTotalS+" first class seats("+C1RLS+" remaining)," + C2seatsTotalS+" business class seats("+C2RLS+" remaining), and " +C3seatsTotalS+" economy class seats("+C3RLS+" remaining).");
 	}
 	
+	public String infoS() {
+		String timeS = String.valueOf(Time);
+		String C1seatsTotalS = String.valueOf(C1seatsTotal);
+		String C2seatsTotalS = String.valueOf(C2seatsTotal);
+		String C3seatsTotalS = String.valueOf(C3seatsTotal);
+		String C1RLS = String.valueOf(C1RL());
+		String C2RLS = String.valueOf(C2RL());
+		String C3RLS = String.valueOf(C3RL());
+		return "This trip leaves on "+Date+" at "+timeS+" with "+C1seatsTotalS+"\n"+" first class seats("+C1RLS+" remaining)," + C2seatsTotalS+" business class seats("+C2RLS+" remaining), and " +C3seatsTotalS+" economy class seats("+C3RLS+" remaining).";
+	}
+	
 
 	
 }
