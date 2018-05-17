@@ -6,6 +6,10 @@ public class Booking {
 	private int quality;
 	private double bribe;
 	public Booking(String x, int t, int q, double b) {
+		/*
+		 This booking class contains all the information we need to have about a passenger
+		 to make a reservation. Each "booking" is like a person.
+		 */
 		name=x;
 		timeinpurgatory=t;
 		result=q;
@@ -13,6 +17,7 @@ public class Booking {
 		quality=0;
 	}
 	
+	//Get methods.
 	public String getName() {
 		return name;
 	}
@@ -29,6 +34,9 @@ public class Booking {
 		return bribe;
 	}
 	
+	
+	//This is a complex method where we assign a user a class based on their personal info
+	//and on some randomness.
 	public int assignClass(int result, int bribe) {
 		if (result==3 && bribe>=1000) {
 			return 3;
@@ -71,29 +79,11 @@ public class Booking {
 		return 1;
 	}
 	
+	//We were going to use this method to make our booking system take into account
+	//the time someone has been waiting, but we did not have enough time to implement it.
 	public double assignImportance() {
 		double importance = (timeinpurgatory^3)*(1/10)*Math.log10(timeinpurgatory);
 		return importance;
 	}
-	
-	
-	/*
-	public void assignTrip(double timeinpurgatory, ArrayList<Trip> trips){
-		if(quality==3) {
-			for(Trip x : trips) {
-				if (x.C1RL()!=0) {
-					
-				}
-			}
-		}
-		if(quality==2) {
-			
-		}
-		if(quality==1) {
-			
-		}
-		
-	}
-	*/
 }
 

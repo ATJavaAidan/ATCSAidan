@@ -11,6 +11,11 @@ public class Trip {
 	private ArrayList<Booking> bookingsC2;
 	private ArrayList<Booking> bookingsC3;
 	public Trip(String d, double t, String L, ArrayList<Booking> b, ArrayList<Booking> f, ArrayList<Booking> g) {
+		/*
+		 This trip class hold three array-lists containing bookings for passengers. 
+		 The three array-lists correspond with different classes on the boat.
+		 The trip also has a departure date and time, and a destination in hell
+		 */
 		Date=d;
 		Time=t;
 		C1seatsTotal=10;
@@ -22,7 +27,8 @@ public class Trip {
 		bookingsC3=g;
 	}
 	
-	public String getDate(){
+	//The next methods are simple get methods
+	public String getDate() {
 		return Date;
 	}
 	
@@ -42,6 +48,9 @@ public class Trip {
 		return bookingsC3;
 	}
 	
+	//For giving the user information about the trip and finding a viable "seat" on the trip,
+	//the next six methods return the number of reservations in each class, and the remaining seats.
+	
 	public int getC1reservations(){
 		return bookingsC1.size();
 	}
@@ -52,23 +61,6 @@ public class Trip {
 	
 	public int getC3reservations(){
 		return bookingsC3.size();
-	}
-	
-	public String getLocation() {
-		return Location;
-	}
-	
-	public void updateDate(String x) {
-		Date=x;
-	}
-	
-	public void updateTime(double x) {
-		Time=x;
-	}
-	
-	
-	public void updateLocation(String x) {
-		Location=x;
 	}
 	
 	public int reservations() {
@@ -88,6 +80,26 @@ public class Trip {
 		return C3seatsTotal-bookingsC3.size();
 	}
 	
+	public String getLocation() {
+		return Location;
+	}
+	
+	
+	//For future buildout of this program, if we want Satan to be able to modify trips.
+	public void updateDate(String x) {
+		Date=x;
+	}
+	
+	public void updateTime(double x) {
+		Time=x;
+	}
+	
+	
+	public void updateLocation(String x) {
+		Location=x;
+	}
+	
+	//This method adds a booking to a designated class. This is key because it allows us to fill up trips.
 	public void addBooking(int x, Booking b) {
 		if (x==3) {
 			bookingsC1.add(b);
@@ -103,6 +115,7 @@ public class Trip {
 		}
 	}
 	
+	//Prints out trip info for our debugging purposes
 	public void info() {
 		String timeS = String.valueOf(Time);
 		String C1seatsTotalS = String.valueOf(C1seatsTotal);
@@ -114,6 +127,7 @@ public class Trip {
 		System.out.println("This trip leaves on "+Date+" at "+timeS+" with "+C1seatsTotalS+" first class seats("+C1RLS+" remaining)," + C2seatsTotalS+" business class seats("+C2RLS+" remaining), and " +C3seatsTotalS+" economy class seats("+C3RLS+" remaining).");
 	}
 	
+	//Returns a string of info for the users purposes
 	public String infoS() {
 		String timeS = String.valueOf(Time);
 		String C1seatsTotalS = String.valueOf(C1seatsTotal);
@@ -124,7 +138,4 @@ public class Trip {
 		String C3RLS = String.valueOf(C3RL());
 		return "This trip leaves on "+Date+" at "+timeS+" with "+C1seatsTotalS+"\n"+" first class seats("+C1RLS+" remaining)," + C2seatsTotalS+" business class seats("+C2RLS+" remaining), and " +C3seatsTotalS+" economy class seats("+C3RLS+" remaining).";
 	}
-	
-
-	
 }

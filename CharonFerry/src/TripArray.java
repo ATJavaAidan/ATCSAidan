@@ -4,42 +4,45 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 public class TripArray {
+	/*
+	 This class is our container class, and is an array-list of trips with various specific methods.
+	 Thus, the primary object is the trip array made by the constructor.
+	 */
 	private ArrayList<Trip> trips;
 	public TripArray() {
 		trips = new ArrayList <Trip>();
 	}
 	
-	public void search(String h) {
+	//This is our search method. It takes in a name and finds which trip that person is on.
+	//It then returns information about that trip.
+	//If the person is not in the system, an alternate explanatory message is displayed.
+	public String search(String h) {
 		for(Trip k:trips) {
 			for(Booking u : k.getc1()) {
 				if(u.getName()==h) {
-					System.out.println("This passenger was found! Look below for their trip info: ");
-					k.info();
-					break;
+					return "This passenger was found! Their trip info is: "+k.infoS();
 				}
 			}
 			for(Booking u : k.getc2()) {
 				if(u.getName()==h) {
-					System.out.println("This passenger was found! Look below for their trip info: ");
-					k.info();
-					break;
+					return "This passenger was found! Their trip info is: "+k.infoS();
 				}
 			}
 			for(Booking u : k.getc3()) {
 				if(u.getName()==h) {
-					System.out.println("This passenger was found! Look below for their trip info: ");
-					k.info();
-					break;
+					return "This passenger was found! Their trip info is: "+k.infoS();
 				}
 			}
 		}
-		System.out.println("This passenger was not found. They are likely still alive or in purgatory.");
+		return ("This passenger was not found. They are likely still alive or in purgatory.");
 	}
 	
+	//Very simple add method for the array-list.
 	public void add(Trip t){
 		trips.add(t);
 	}
 	
+	//Very simple remove method.
 	public boolean remove(Trip t){
 		if (trips.contains(t)) {
 		    trips.remove(t);
@@ -49,6 +52,11 @@ public class TripArray {
 		}
 	}
 	
+	//This method finds a trip based on the class a user was assigned. 
+	//The algorithm is very simple, as the method scans through each trip in the array list until one with a spot in the class is found.
+	//If no trip exists (AKA we are out of trips with that class), we would ideally add
+	//another trip to the trip array. Sadly, we ran out of time, but would love to add this feature.
+	//As of now, it returns a "bogus" trip if there are no trips with the specific class c.
 	public Trip findT(int c) {
 		for (Trip x: trips) {
 			if (c==3) {
@@ -75,6 +83,8 @@ public class TripArray {
 		return h;
 	}
 	
+	//Scans the array-list for a specific trip. We did not have to use this method,
+	//but would in the future in conjunction with the above add trip potential.
 	public boolean contains(Trip t) {
 		if (trips.contains(t)) {
 			return true;
@@ -83,11 +93,15 @@ public class TripArray {
 			return false;
 		}
 	}
-
+	
+	//Returns the number of trips in the array-list.
 	public int length() {
 		return trips.size();
 	}
 	
+	//Writes to a file. Was very complicated to create method. We first print the number of total trips at the top of the file.
+	//On the next line, we write the general data about the trip and then three numbers, which tell us the number of bookings stored in each class array list (economy, business, or first).
+	//Then the bookings follow in class order.
 	public void fileWriter(){
 		try {
 			FileWriter g = new FileWriter("TripLog.txt");
@@ -115,6 +129,7 @@ public class TripArray {
 		}
 	}
 	
+	//Reads file of specific format made by write file.
 	public void fileReader() {
 		try {
 			FileReader fr = new FileReader("TripLog.txt");
@@ -177,20 +192,20 @@ public class TripArray {
 		}
 	}
 	
+	//Prints out all trips and rudimentary data
 	public void print() {
 		for (Trip x: trips) {
 			x.info(); 
 		}
 	}
 	
+	//Returns the array list
 	public ArrayList<Trip> getData(){
 		return trips;
 	}
 	
-	public void populate() {
-		
-	}
-	
+	//Finds a trip in the array-list of a specific date and time.
+	//If no trip found, returns "bogus" trip.
 	public Trip find(String a, double t) {
 		for (Trip x: trips) {
 			if (x.getDate()==a) { 
